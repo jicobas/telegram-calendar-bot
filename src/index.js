@@ -1,9 +1,10 @@
 const express = require('express');
 require('dotenv').config();
 
-const app = express();
-
+// 👇 IMPORT OBLIGATORIO
 const { handleUpdate } = require('./telegram');
+
+const app = express();
 
 app.use(express.json());
 
@@ -13,7 +14,7 @@ app.post('/webhook', async (req, res) => {
   } catch (err) {
     console.error('❌ Error en handleUpdate:', err);
   }
-  res.sendStatus(200); // Telegram SIEMPRE necesita 200
+  res.sendStatus(200);
 });
 
 app.get('/', (req, res) => {
